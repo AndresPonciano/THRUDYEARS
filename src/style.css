@@ -1,0 +1,152 @@
+:root {
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  --swatch-white: #fcfcfc;
+  --swatch-black: #080807;
+  --swatch-gray: #dcddde;
+  --swatch-dark-gray: #545454;
+  --swatch-light-gray: #545454;
+  --swatch-transparent: #fff0;
+  --swatch-brand-text: var(--swatch-black);
+  
+  --swatch-input: #292929;
+
+  --text-main-font-family: "Sofia Sans", sans-serif;
+  --font-primary-family: "Sofia Sans", sans-serif;
+  --text-main-font-size: 1.05rem;
+  --site-margin-main: clamp(0.875rem, 0.434rem + 1.23vw, 2.429rem);
+  --site-margin-main: 0px;
+  --max-width-full: 80rem;
+  --max-width-small: 768px; 
+
+  --line-height-0-95em: 0.95em;
+  --line-height-1-2em: 1.2em;
+  --line-height-1-05: 1.05em;
+
+  --all-headings-line-height: var(--line-height-0-95em);
+
+  --display-font-size: 10.56rem;
+  --h1-font-size: 5.47rem;
+  --h1-font-family: var(--font-primary-family);
+  --h1-line-height: var(--all-headings-line-height);
+  --h2-font-size: 3.93rem;
+  --h2-font-family: var(--font-primary-family);
+  --h3-font-size: 2.83rem;
+  --h3-font-family: var(--font-primary-family);
+  --h4-font-size: 2.04rem;
+  --h4-font-family: var(--font-primary-family);
+  --h5-font-size: 1.46rem;
+  --h5-font-family: var(--font-primary-family);
+  --h6-font-size: 1.05rem;
+  --h6-font-family: var(--font-primary-family);
+
+  --text-main-line-height: var(--line-height-1-2em);
+  --text-small-fontsize: 0.875rem;
+  --text-small-line-height: var(--line-height-1-2em);
+  /* font weight variables */
+
+  /* line heights */
+
+  --letter-spacing-0em: 0em;
+  --letter-spacing-header: -.07em;
+
+  /* section space? */
+  --section-space-large: clamp(7.23rem, 5.444rem + 8.93vw, 16.159rem);
+  --section-space-main: clamp(5.17rem, 4.062rem + 5.54vw, 10.712rem);
+  --section-space-small: clamp(3.69rem, 3.01rem + 3.4vw, 7.09rem);
+
+  /* size vars this is padding */
+  /* space vars?? */
+
+  /* border vars */
+  /* radius variables */
+
+  --theme-background: var(--swatch-white);
+  --theme-text: var(--swatch-dark);
+  --theme-border: var(--swatch-light-secondary);
+  /* dont know what these 3 are for */
+  /* --theme-background: white;
+  --theme-text: white;
+  --theme-border: white; */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  font-family: var(--text-main-font-family);
+  margin: var(--site-margin-main);
+  padding: 0em .5em;
+  color: var(--theme-text);
+  background-color: var(--theme-background);
+  line-height: var(--text-main-line-height);
+}
+
+.wrapper {
+  height: 100vh;
+}
+
+.nav-container {
+  background-color: greenyellow;
+}
+
+nav {
+  display: flex;
+  position: relative;
+  z-index: 10;
+  justify-content: space-between;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+li {
+  font-size: var(--h6-font-size);
+  font-weight: 600;
+}
+
+.logo {
+  height: 4.5em;
+}
+
+.instagram {
+  height: 1.5em;
+}
+
+.year-container {
+  height: 100%;
+}
+
+.year-header {
+  background-color: aquamarine;
+}
+
+h1, .year-header {
+  margin: 0;
+  padding: 0;
+  position: sticky;
+  font-size: var(--display-font-size);
+  height: var(--all-headings-line-height);
+  letter-spacing: var(--letter-spacing-header);
+
+  line-height: 1;
+  z-index: 1;
+}
+
+.year-art{
+  background-color: orange;
+  height: 80%;
+  z-index: -1;
+}
