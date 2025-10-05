@@ -91,6 +91,8 @@ html, body {
 
 .wrapper {
   height: 100vh;
+  width: var(--max-width-full);
+  margin: 0 auto;
 }
 
 .nav-container {
@@ -99,7 +101,10 @@ html, body {
 
 nav {
   display: flex;
-  position: relative;
+  position: fixed;
+  top: 0px;
+  width: var(--max-width-full);
+  background-color: red;
   z-index: 10;
   justify-content: space-between;
 }
@@ -136,13 +141,12 @@ li {
 h1, .year-header {
   margin: 0;
   padding: 0;
-  position: sticky;
+  position: relative;
   font-size: var(--display-font-size);
   height: var(--all-headings-line-height);
   letter-spacing: var(--letter-spacing-header);
 
   line-height: 1;
-  z-index: 1;
 }
 
 .year-art{
