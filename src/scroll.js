@@ -11,6 +11,7 @@ let art_sections = document.querySelectorAll(".year-art");
 let art_sections_height = [];
 let nav = document.querySelector("nav");
 document.querySelectorAll(".year-container")[0].style.marginTop = nav.offsetHeight + "px";
+document.querySelectorAll(".year-header")[0].style.top = nav.offsetHeight + "px";
 
 console.log(nav.scrollHeight)
 console.log(document.querySelectorAll(".year-container")[0].style);

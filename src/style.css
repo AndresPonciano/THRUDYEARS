@@ -140,12 +140,11 @@ li {
 
 h1, .year-header {
   margin: 0;
-  padding: 0;
-  position: relative;
+  top: 100px;
+  position: sticky;
   font-size: var(--display-font-size);
   height: var(--all-headings-line-height);
   letter-spacing: var(--letter-spacing-header);
-
   line-height: 1;
 }
 
