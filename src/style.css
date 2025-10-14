@@ -131,7 +131,7 @@ li {
 }
 
 .year-container {
-  height: 100%;
+  /* height: 100%; */
 }
 
 .year-header {
@@ -140,7 +140,7 @@ li {
 
 h1, .year-header {
   margin: 0;
-  top: 100px;
+  top: 80px;
   position: sticky;
   font-size: var(--display-font-size);
   height: var(--all-headings-line-height);
@@ -150,6 +150,12 @@ h1, .year-header {
 
 .year-art{
   background-color: orange;
-  height: 80%;
-  z-index: -1;
+  display: block;
+  position: static;
+  /* height: fit-content; */
+  overflow: scroll;
+}
+
+img {
+  height: 25rem;
 }
