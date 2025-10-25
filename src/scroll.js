@@ -11,11 +11,10 @@ let art_sections = document.querySelectorAll(".year-art");
 let art_sections_height = [];
 let nav = document.querySelector("nav");
 document.querySelectorAll(".year-container")[0].style.marginTop = nav.offsetHeight + "px";
-document.querySelectorAll(".year-header").style.top = nav.offsetHeight + "px";
-// document.querySelectorAll(".year-header").forEach((header) => header.style.marginTop = nav.offsetHeight + "px")
+headers.forEach((header) => header.style.top = nav.offsetHeight + "px")
 
-console.log(nav.scrollHeight)
-console.log(document.querySelectorAll(".year-container")[0].style);
+console.log(nav.offsetHeight)
+console.log(document.querySelectorAll(".year-container")[0].style.marginTop);
 
 
 
@@ -30,16 +29,27 @@ console.log(document.querySelectorAll(".year-container")[0].style);
 
 // get heights of year body sections
 
-// gsap.to('.year-2025', {
-// 	scrollTrigger: {
-//         trigger: '.year-2025',
-//         start: 'top top',
-//         pin: true,
-//         // end: 'bottom bottom',
-//         scrub: true,
-//         markers: true,
-//     },
-//     y: -art_sections_height[0],
-//     duration: 5,
-//     // ease: 'none',
-// });
+headers.forEach((header) => {
+    gsap.to(header, {
+        scrollTrigger: {
+            trigger: header,
+            start: 'top 64px',
+            end: 'bottom 100px',
+            toggleActions: "none reverse",
+            markers: true,
+        },
+        backgroundColor: "red"
+    });
+})
+
+// headers.forEach((header) => {
+//     gsap.to(header, {
+//         scrollTrigger: {
+//             trigger: header,
+//             // start: 'top 64px',
+//             // end: 'bottom 64px',
+//             markers: true,
+//         },
+//         backgroundColor: "white"
+//     });
+// })
