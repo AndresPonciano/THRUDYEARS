@@ -34,11 +34,17 @@ headers.forEach((header) => {
         scrollTrigger: {
             trigger: header,
             start: 'top 64px',
-            end: 'bottom 100px',
-            toggleActions: "none reverse",
-            markers: true,
+            end: 'bottom 64px',
+            toggleActions: "play none reset reset",
+            scrub: true,
+            duration: 0.5,
+            // markers: true,
         },
-        backgroundColor: "red"
+        // backgroundColor: "#080807",
+        backgroundColor: "#080807",
+        color: "#fcfcfc",
+        duration: 0.5,
+        ease: "power3.out"
     });
 })
 
@@ -46,7 +52,7 @@ headers.forEach((header) => {
 //     gsap.to(header, {
 //         scrollTrigger: {
 //             trigger: header,
-//             // start: 'top 64px',
+//             start: 'top 64px',
 //             // end: 'bottom 64px',
 //             markers: true,
 //         },

@@ -164,7 +164,8 @@ h1, .year-header {
   height: var(--all-headings-line-height);
   letter-spacing: var(--letter-spacing-header);
   line-height: 1;
-  background-color: var(--theme-background);
+  background-color: var(--swatch-white);
+  color: var(--swatch-black);
 }
 
 .year-art{
