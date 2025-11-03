@@ -152,13 +152,57 @@ li {
   height: 4.5em;
 }
 
+.dropdown {
+  position: relative;
+  z-index: 10;
+}
+
+.dropdown-button {
+  padding: .1em;
+  border: none;
+  background: none;
+  font-size: var(--h6-font-size);
+  font-family: inherit;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--h6-font-size);
+  font-weight: 600;
+}
+
+.link-container {
+  position: relative;
+}
+
+.link-container .hover-link {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--swatch-gray);
+  color: var(--swatch-white);
+  /* content-visibility: hidden; */
+  /* margin-top: .3em;
+  padding: .1em;
+  line-height: 1; */
+  /* DECRASE THE WIDTH */
+}
+
+a {
+  /* margin-top: .3em;
+  padding: .1em;
+  line-height: 1; */
+  background-color: var(--swatch-white);
+}
+
 .instagram {
   height: 1.5em;
 }
 
 h1, .year-header {
   margin: 0;
-  /* top: 64px; */
   position: sticky;
   font-size: var(--display-font-size);
   height: var(--all-headings-line-height);
