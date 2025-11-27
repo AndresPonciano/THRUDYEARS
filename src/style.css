@@ -154,7 +154,7 @@ li {
 
 .dropdown {
   display: flex;
-  /* align-items: center; */
+  align-content: center;
   position: relative;
 }
 
@@ -163,7 +163,7 @@ li {
   background: none;
   font-size: var(--h6-font-size);
   line-height: 1;
-  font-weight: 600;
+  font-weight: 800;
   background-color: var(--swatch-white);
   font-family: inherit;
   z-index: 1;
