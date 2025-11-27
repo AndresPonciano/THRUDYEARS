@@ -153,47 +153,63 @@ li {
 }
 
 .dropdown {
+  display: flex;
+  /* align-items: center; */
   position: relative;
-  z-index: 10;
 }
 
 .dropdown-button {
-  padding: .1em;
   border: none;
   background: none;
   font-size: var(--h6-font-size);
+  line-height: 1;
+  font-weight: 600;
+  background-color: var(--swatch-white);
   font-family: inherit;
+  z-index: 1;
 }
 
 .dropdown-menu {
   position: absolute;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   font-size: var(--h6-font-size);
+  line-height: 1;
   font-weight: 600;
+  z-index: 0;
 }
 
 .link-container {
-  position: relative;
-}
+  background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 
-.link-container .hover-link {
   position: absolute;
+  overflow: hidden;
   top: 0px;
   left: 0px;
-  background-color: var(--swatch-gray);
-  color: var(--swatch-white);
-  /* content-visibility: hidden; */
-  /* margin-top: .3em;
-  padding: .1em;
-  line-height: 1; */
-  /* DECRASE THE WIDTH */
 }
 
-a {
-  /* margin-top: .3em;
-  padding: .1em;
-  line-height: 1; */
+.hover-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 1;
+  background-color: var(--swatch-gray);
+  color: var(--swatch-white);
+  transform: matrix3d(
+              1, 0, 0, 0,
+              0, 1, 0, 0, 
+              0, 0, 1, 0, 
+              0, 20, 0, 1);
+}
+
+.main-link {
   background-color: var(--swatch-white);
 }
 
