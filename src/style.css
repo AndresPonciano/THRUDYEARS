@@ -49,6 +49,7 @@
 
   --letter-spacing-0em: 0em;
   --letter-spacing-header: -.07em;
+  --letter-spacing-small: .03em;
 
   --section-space-large: clamp(7.23rem, 5.444rem + 8.93vw, 16.159rem);
   --section-space-main: clamp(5.17rem, 4.062rem + 5.54vw, 10.712rem);
@@ -162,6 +163,7 @@ li {
   border: none;
   background: none;
   font-size: var(--h6-font-size);
+  letter-spacing: var(--letter-spacing-small);
   line-height: 1;
   font-weight: 800;
   background-color: var(--swatch-white);
@@ -189,24 +191,25 @@ li {
   font-size: inherit;
   font-weight: inherit;
 
+  line-height: 1;
   position: absolute;
   overflow: hidden;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
 }
 
 .hover-link {
   position: absolute;
   top: 0;
   left: 0;
-  line-height: 1;
+  right: 0;
+  width: fit-content;
+  /* height: inherit; */
+  margin-inline: auto;
+  /* line-height: 1; */
   background-color: var(--swatch-gray);
   color: var(--swatch-white);
-  transform: matrix3d(
-              1, 0, 0, 0,
-              0, 1, 0, 0, 
-              0, 0, 1, 0, 
-              0, 20, 0, 1);
+  transform: translateY(100%) rotateX(-28deg) rotateY(-28deg) rotate(10deg); 
 }
 
 .main-link {

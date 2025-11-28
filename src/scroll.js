@@ -40,7 +40,8 @@ const dropdown_button_width = dropdown_button.offsetWidth;
 
 const link_containers = dropdown.querySelectorAll('.link-container');
 
-dropdown.addEventListener("mouseenter", () => {
+dropdown.addEventListener("mouseleave", () => {
+    console.log(dropdown_button_width)
     let new_width = 0;
 
     link_containers.forEach((link_c) => {
@@ -51,34 +52,34 @@ dropdown.addEventListener("mouseenter", () => {
     })
 })
 
-dropdown.addEventListener("mouseleave", () => {
-    link_containers.forEach((link_c) => {
-        gsap.to(link_c, {
-            x: 0
-        })
-    })
-})
+// dropdown.addEventListener("mouseenter", () => {
+//     link_containers.forEach((link_c) => {
+//         gsap.to(link_c, {
+//             x: 0
+//         })
+//     })
+// })
 
-// let main_link = link_containers[0].querySelector(".main-link")
-// let hover_link = link_containers[0].querySelector(".hover-link")
+let main_link = link_containers[0].querySelector(".main-link")
+let hover_link = link_containers[0].querySelector(".hover-link")
 
-// link_containers[0].addEventListener('mouseenter', () => {
-//     gsap.to(hover_link, { 
-//         motionPath: {
-//             path: ""
-//         },
-//     duration: 0.4,
-//     ease: 'power2.out'
-//     });
+link_containers[0].addEventListener('mouseenter', () => {
+    gsap.to(hover_link, { 
+        motionPath: {
+            path: ""
+        },
+    duration: 0.4,
+    ease: 'power2.out'
+    });
 
-//     gsap.to(main_link, { 
-//         motionPath: {
-//             path: ""
-//         },
-//     duration: 0.4,
-//     ease: 'power2.out'
-//     });
-// });
+    gsap.to(main_link, { 
+        motionPath: {
+            path: ""
+        },
+    duration: 0.4,
+    ease: 'power2.out'
+    });
+});
 
 // link_containers[0].addEventListener('mouseleave', () => {
 //     gsap.to(hover_link, { 
