@@ -44,9 +44,10 @@ dropdown.addEventListener("mouseleave", () => {
     console.log(dropdown_button_width)
     let new_width = 0;
 
-    link_containers.forEach((link_c) => {
+    link_containers.forEach((link_c, index) => {
         gsap.to(link_c, {
-            x: dropdown_button_width + new_width
+            x: dropdown_button_width + new_width,
+            left: 12 * index
         })
         new_width += link_c.offsetWidth
     })
