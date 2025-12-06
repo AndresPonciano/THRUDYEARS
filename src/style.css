@@ -183,7 +183,7 @@ li {
 .dropdown-menu {
   position: absolute;
   display: flex;
-  left: var(--spacing-xs);
+  /* left: var(--spacing-xs); */
   flex-direction: row;
   font-size: var(--h5-font-size);
   font-weight: 600;
@@ -232,7 +232,6 @@ li {
   line-height: 1;
   margin: 0;
   padding: 0;
-  /* height: inherit; */
 }
 
 .instagram {
@@ -251,10 +250,8 @@ h1, .year-header {
 }
 
 .year-art{
-  /* background-color: orange; */
   display: block;
   position: static;
-  /* height: fit-content; */
   overflow: scroll;
   scrollbar-width: none;
   z-index: -1;

@@ -40,68 +40,70 @@ const dropdown_button_width = dropdown_button.offsetWidth;
 
 const link_containers = dropdown.querySelectorAll('.link-container');
 
-dropdown.addEventListener("mouseleave", () => {
+dropdown.addEventListener("mouseenter", () => {
     console.log(dropdown_button_width)
     let new_width = 0;
 
     link_containers.forEach((link_c, index) => {
         gsap.to(link_c, {
             x: dropdown_button_width + new_width,
-            left: 12 * index
+            // left: 12 * index
         })
         new_width += link_c.offsetWidth
     })
 })
 
-// dropdown.addEventListener("mouseenter", () => {
-//     link_containers.forEach((link_c) => {
-//         gsap.to(link_c, {
-//             x: 0
-//         })
-//     })
-// })
+dropdown.addEventListener("mouseleave", () => {
+    link_containers.forEach((link_c) => {
+        gsap.to(link_c, {
+            x: 0
+        })
+    })
+})
 
-let main_link = link_containers[0].querySelector(".main-link")
-let hover_link = link_containers[0].querySelector(".hover-link")
+link_containers.forEach((link_c) => {
+    let main_link = link_c.querySelector(".main-link")
+    let hover_link = link_c.querySelector(".hover-link")
 
-link_containers[0].addEventListener('mouseenter', () => {
-    gsap.to(hover_link, { 
-        motionPath: {
-            path: ""
-        },
-    duration: 0.4,
-    ease: 'power2.out'
+    link_c.addEventListener('mouseenter', () => {
+        gsap.to(hover_link, { 
+            y: 0,           // translateY back to 0
+            rotationX: 0,   // rotateX back to 0
+            rotationY: 0,   // rotateY back to 0
+            rotation: 0,    // rotate back to 0
+            ease: 'power4.out',
+            duration: 0.4,
+        });
+    
+        gsap.to(main_link, { 
+            x: 0, 
+            y: '125%',  // Starting position
+            rotationX: -28,
+            rotationY: -28,
+            rotation: 10,   // rotate back to 0
+            ease: 'power2.out',
+            duration: 0.4,
+        });
     });
-
-    gsap.to(main_link, { 
-        motionPath: {
-            path: ""
-        },
-    duration: 0.4,
-    ease: 'power2.out'
+    
+    link_c.addEventListener('mouseleave', () => {
+        gsap.to(main_link, { 
+            y: 0,           // translateY back to 0
+            rotationX: 0,   // rotateX back to 0
+            rotationY: 0,   // rotateY back to 0
+            rotation: 0,    // rotate back to 0
+            ease: 'power4.out',
+            duration: 0.4,
+        });
+    
+        gsap.to(hover_link, { 
+            x: 0, 
+            y: '125%',  // Starting position
+            rotationX: -28,
+            rotationY: -28,
+            rotation: 10,   // rotate back to 0
+            ease: 'power2.out',
+            duration: 0.4,
+        });
     });
-});
-
-// link_containers[0].addEventListener('mouseleave', () => {
-//     gsap.to(hover_link, { 
-//         motionPath: {
-//             path: [
-//                 { x: 0, y: 0 },
-//                 { x: 0, y: -30 }  // Slide up 30px
-//             ]
-//         },
-//     duration: 0.4,
-//     ease: 'power2.out'
-//     });
-
-//     gsap.to(main_link, { 
-//         motionPath: {
-//             path: [
-//                 { x: 0, y: -30 },
-//                 { x: 0, y: -30 }  // Slide up 30px
-//             ]
-//         },
-//     duration: 0.4,
-//     ease: 'power2.out'
-//     });
-// })
+})
