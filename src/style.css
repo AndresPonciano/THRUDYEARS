@@ -163,6 +163,7 @@ li {
   display: flex;
   align-content: center;
   position: relative;
+  width: auto;
 }
 
 .dropdown-button {
@@ -183,11 +184,17 @@ li {
 .dropdown-menu {
   position: absolute;
   display: flex;
-  /* left: var(--spacing-xs); */
   flex-direction: row;
   font-size: var(--h5-font-size);
   font-weight: 600;
   z-index: 0;
+}
+
+.menu-space {
+  position: absolute;
+  height: var(--line-height-1-2em);
+  width: 12px;
+  background-color: var(--swatch-white);
 }
 
 .link-container {

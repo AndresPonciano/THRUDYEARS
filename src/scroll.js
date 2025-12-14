@@ -38,18 +38,20 @@ const dropdown = document.querySelector('.dropdown');
 const dropdown_button = dropdown.querySelector('.dropdown-button');
 const dropdown_button_width = dropdown_button.offsetWidth;
 
+const menu_items = dropdown.querySelector('.dropdown-menu').children;
+// const menu_items = dropdown_menu.children;
 const link_containers = dropdown.querySelectorAll('.link-container');
 
 dropdown.addEventListener("mouseenter", () => {
-    console.log(dropdown_button_width)
-    let new_width = 0;
+    console.log(menu_items);
+    let prevX = dropdown_button_width;
 
-    link_containers.forEach((link_c, index) => {
+    Array.from(menu_items).forEach((link_c, index) => {
         gsap.to(link_c, {
-            x: dropdown_button_width + new_width,
-            // left: 12 * index
+            x: prevX,
         })
-        new_width += link_c.offsetWidth
+        console.log(prevX, "---", link_c.offsetWidth);
+        prevX += link_c.offsetWidth
     })
 })
 
