@@ -4,16 +4,21 @@ import { ScrollTrigger, MotionPathPlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(MotionPathPlugin);
 
-// let isInView = ScrollTrigger;
+// body.addEventListener("load", () => {
+//     document.body.style.visibility = "visible";
+// })
+
+window.addEventListener('load', () => {
+    console.log('Everything loaded!');
+    document.body.style.overflow = "scroll";
+    // document.querySelector(".preloader-container").style.visibility = "hidden";
+});
+
+const slides = gsap.utils.toArray(".loading-header");
 
 // get all year headers except for the first one
 let headers = document.querySelectorAll(".year-header");
 let nav = document.querySelector("nav");
-document.querySelectorAll(".year-container")[0].style.marginTop = nav.offsetHeight + "px";
-headers.forEach((header) => header.style.top = nav.offsetHeight + "px")
-
-// console.log(nav.offsetHeight)
-// console.log(document.querySelectorAll(".year-container")[0].style.marginTop);
 
 headers.forEach((header) => {
     gsap.to(header, {
@@ -43,20 +48,18 @@ const menu_items = dropdown.querySelector('.dropdown-menu').children;
 const link_containers = dropdown.querySelectorAll('.link-container');
 
 dropdown.addEventListener("mouseenter", () => {
-    console.log(menu_items);
     let prevX = dropdown_button_width;
 
     Array.from(menu_items).forEach((link_c, index) => {
         gsap.to(link_c, {
             x: prevX,
         })
-        console.log(prevX, "---", link_c.offsetWidth);
         prevX += link_c.offsetWidth
     })
 })
 
 dropdown.addEventListener("mouseleave", () => {
-    link_containers.forEach((link_c) => {
+    Array.from(menu_items).forEach((link_c) => {
         gsap.to(link_c, {
             x: 0
         })

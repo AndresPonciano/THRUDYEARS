@@ -2,16 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/javascript.svg" />
+    <link rel="icon" type="image/svg+xml" href="/src/Logo_mockup.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/src/style.css"></script>
+    <script rel="preload" type="module" src="/src/style.css"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">    <title>THRUDYEARS</title>
     <!-- <script type="module" src="/src/scroll.js"></script> -->
 
   </head>
-  <body>
+  <body style="overflow: hidden;">
+    <div class="preloader-container">
+      <div class="preloader">
+        <nav class="fake-nav">test</nav>
+        <div class="slider">
+          <h1 class="loading-header">2025</h1>
+          <h1 class="loading-header" style="transform: translate(0%,100%)">2024</h1>
+          <h1 class="loading-header" style="transform: translate(0%,100%)">2023</h1>
+          <h1 class="loading-header" style="transform: translate(0%,100%)">2022</h1>
+        </div>
+      </div>
+    </div>
 
     <div class="wrapper">
       <div class="nav-container">
@@ -19,14 +30,7 @@
           <ul>
             <li>
               <div class="logo-container">
-                <div class="logo-flip">
-                    <div class="logo-front">
-                      <img src="/src/Logo_mockup.svg" class="logo" alt="THRUDYEARS logo" />
-                    </div>
-                    <div class="logo-back">
-                      <img src="/src/javascript.svg" class="logo" alt="THRUDYEARS logo" />
-                    </div>
-                </div>
+                <img src="/src/Logo_mockup.svg" class="logo" alt="THRUDYEARS logo" />
               </div>
             </li>
             <li>
@@ -66,32 +70,56 @@
 
       <div class="year-container year-2025">
         <h1 class="year-header">2025</h1>
-        <div class="year-art year-2025">hi
-          <img src="./src/javascript.svg"/>
-          <img src="./src/instagram.svg"/>
-          <img src="./src/javascript.svg"/>
-          <img src="./src/instagram.svg"/>
+        <div class="year-art-container">
+          <div class="year-art year-2025">
+            <div class="year-art-grid">
+              <div class="picture-wrapper picture-wrapper--horizontal">
+                <div class="picture-border">
+                  <img src="./src/images/horizontal2.jpg"/>
+                </div>
+                <p>this is the description</p>
+              </div>
+              <div class="picture-wrapper picture-wrapper--vertical">
+                <div class="picture-border">
+                  <img src="./src/images/vertical1.jpg"/>
+                </div>
+                <p>test2</p>
+              </div>
+              <img src="./src/images/vertical2.jpg"/>
+              <img src="./src/images/horizontal1.jpg"/>
+              <img src="./src/images/vertical3.jpg"/>
+              <img src="./src/images/horizontal3.jpg"/>
+            </div>
+          </div>
         </div>
       </div>
       <div class="year-container year-2024">
         <h1 class="year-header year-2024">2024</h1>
+        <div class="year-art-container">
         <div class="year-art year-2024">
-          <img src="./src/javascript.svg"/>
-          <img src="./src/instagram.svg"/>
-          <img src="./src/javascript.svg"/>
+          <img src="./src/images/horizontal3.jpg"/>
+          <img src="./src/images/vertical2.jpg"/>
+          <img src="./src/images/vertical3.jpg"/>
+          <img src="./src/images/horizontal2.jpg"/>
+          <img src="./src/images/horizontal1.jpg"/>
+        </div>
         </div>
       </div>
       <div class="year-container year-2023">
         <h1 class="year-header year-2023">2023</h1>
+        <div class="year-art-container">
         <div class="year-art year-2023">
           <img src="./src/javascript.svg"/>
+        </div>
         </div>
       </div>
       <div class="year-container year-2022">
         <h1 class="year-header year-2022">2022</h1>
+        <div class="year-art-container">
         <div class="year-art year-2022">
           <img src="./src/javascript.svg"/>
           <img src="./src/instagram.svg"/>
+        </div>
         </div>
       </div>
     </div>
