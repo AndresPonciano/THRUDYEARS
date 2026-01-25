@@ -139,14 +139,14 @@ button {
 
 .fake-nav {
   background-color: var(--swatch-black);
-  height: 64px;
+  height: 59px;
 }
 
 .slider {
   position: relative;
   font-size: var(--h1-font-size);
   height: var(--all-headings-line-height);
-  margin-top: 64px;
+  margin-top: 59px;
   overflow: hidden;
 }
 
@@ -266,13 +266,13 @@ li {
 
 .year-header {
   position: sticky;
-  top: 64px;
+  top: 59px;
   background-color: var(--swatch-white);
   color: var(--swatch-black);
 }
 
-.wrapper, .year-container:nth-child(4n+1) {
-  margin-top: 64px;
+.wrapper, .year-container > .year-2025 {
+  margin-top: 59px;
 }
 
 .year-art-container {
@@ -308,7 +308,7 @@ li {
 
 .year-art-grid div:nth-child(6n+2) {
   grid-column: 3;
-  grid-row: span 5;  /* Takes 4 rows (400px) */
+  grid-row: span 6;  /* Takes 4 rows (400px) */
 }
 
 .year-art-grid div:nth-child(6n+3) {
@@ -323,7 +323,7 @@ li {
 
 .year-art-grid div:nth-child(6n+5) {
   grid-column: 2 / 3;
-  grid-row: span 4;
+  grid-row: span 6;
 }
 
 .year-art-grid div:nth-child(6n+6) {
@@ -333,6 +333,10 @@ li {
 
 .picture-border {
   display: flex;
+}
+
+.picture-wrapper {
+  overflow: hidden;
 }
 
 .picture-wrapper img{

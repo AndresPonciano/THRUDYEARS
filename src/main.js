@@ -11,7 +11,7 @@ gsap.registerPlugin(MotionPathPlugin);
 // CONFIGURATION
 // ============================================
 const CONFIG = {
-    navHeight: 64,
+    navHeight: 59,
     colors: {
         dark: '#080807',
         light: '#fcfcfc',
