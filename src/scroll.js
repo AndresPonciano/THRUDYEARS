@@ -4,17 +4,76 @@ import { ScrollTrigger, MotionPathPlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(MotionPathPlugin);
 
-// body.addEventListener("load", () => {
-//     document.body.style.visibility = "visible";
-// })
+let slides = gsap.utils.toArray(".loading-header");
+
+const test_function = (index) => {
+    let rotate_amount = 1;
+    let slides_length = slides.length;
+
+    rotate(0,slides_length-1);
+    rotate(1,slides_length-1);
+
+    // gsap.to(slides[0], {
+    //     y: "0%",
+    //     opacity: 100
+    // })
+    // gsap.to(slides[1], {
+    //     y: "100%",
+    //     opacity: 0
+    // })
+    gsap.set(slides[0], {y: "0%"})
+    gsap.set(slides[1], {y: "100%"})
+
+    // for(let i = rotate_amount; i < slides_length; i++) {
+    //     gsap.set(slides[i], {
+    //         y: "100%"
+    //     })
+    // }
+
+    // slides.forEach(element => {
+    //     console.log(element, element.innerText)
+    // });
+    // console.log(slides[0], slides[0].innerText, slides[0]._gsap.yPercent)
+
+    console.log("---", index)
+}
+
+const rotate = (start_index,end_index) => {
+    let i = start_index;
+    while(i < end_index) {
+        let temp = slides[i];
+        slides[i] = slides[end_index];
+        slides[end_index] = temp;
+
+        i += 1;
+        end_index -= 1;
+    }
+}
+
+let tl = gsap.timeline({});
+let i = 0;
+
 
 window.addEventListener('load', () => {
     console.log('Everything loaded!');
     document.body.style.overflow = "scroll";
     // document.querySelector(".preloader-container").style.visibility = "hidden";
+    
+    // tl.call(test_function())
+    //   .call(test_function())
+    tl.add(() => test_function(i+1), "+=1")
+    .add(() => test_function(i+2), "+=1")
+    // .add(() => test_function(i+3))
+    // .add(() => test_function(i+4))
+    // while(i < 5) {
+    //     tl.add(test_function(i), "+=10")
+    //     i += 1;
+    // }
 });
 
-const slides = gsap.utils.toArray(".loading-header");
+document.querySelector(".fake-button").addEventListener("click", () => {
+    test_function(0)
+})
 
 // get all year headers except for the first one
 let headers = document.querySelectorAll(".year-header");

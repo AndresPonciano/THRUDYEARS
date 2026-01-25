@@ -4,24 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/Logo_mockup.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script rel="preload" type="module" src="/src/style.css"></script>
+    <link rel="stylesheet" href="/src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">    <title>THRUDYEARS</title>
-    <!-- <script type="module" src="/src/scroll.js"></script> -->
-
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">    
+    <title>THRUDYEARS</title>
   </head>
   <body style="overflow: hidden;">
     <div class="preloader-container">
       <div class="preloader">
-        <nav class="fake-nav">test</nav>
+        <nav class="fake-nav">test
+          <button class="fake-button">fake button</button>
+        </nav>
         <div class="slider">
-          <h1 class="loading-header">2025</h1>
-          <h1 class="loading-header" style="transform: translate(0%,100%)">2024</h1>
-          <h1 class="loading-header" style="transform: translate(0%,100%)">2023</h1>
-          <h1 class="loading-header" style="transform: translate(0%,100%)">2022</h1>
+          <h1 class="header loading-header" style="transform: translate(0%,0%)">2025</h1>
+          <h1 class="header loading-header" style="transform: translate(0%,100%)">2024</h1>
+          <h1 class="header loading-header" style="transform: translate(0%,100%)">2023</h1>
+          <h1 class="header loading-header" style="transform: translate(0%,100%)">2022</h1>
         </div>
       </div>
+      <div class="preloader_line" style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%) translate(-1920px);"></div>
     </div>
 
     <div class="wrapper">
@@ -39,23 +41,23 @@
                 <div class="dropdown-menu">
                   <span class="menu-space"></span>
                   <button class="link-container">
-                    <span class="main-link" href="#year-2025">2025</span>
-                    <span class="hover-link" href="#year-2025">2025</span>
+                    <span class="base-link main-link" href="#year-2025">2025</span>
+                    <span class="base-link hover-link" href="#year-2025">2025</span>
                   </button>
                   <span class="menu-space"></span>
                   <button class="link-container">
-                    <span class="main-link" href="#year-2024">2024</span>
-                    <span class="hover-link" href="#year-2024">2024</span>
+                    <span class="base-link main-link" href="#year-2024">2024</span>
+                    <span class="base-link hover-link" href="#year-2024">2024</span>
                   </button>
                   <span class="menu-space"></span>
                   <button class="link-container">
-                    <span class="main-link" href="#year-2023">2023</span>
-                    <span class="hover-link" href="#year-2023">2023</span>
+                    <span class="base-link main-link" href="#year-2023">2023</span>
+                    <span class="base-link hover-link" href="#year-2023">2023</span>
                   </button>
                   <span class="menu-space"></span>
                   <button class="link-container">
-                    <span class="main-link" href="#year-2022">2022</span>
-                    <span class="hover-link" href="#year-2022">2022</span>                  
+                    <span class="base-link main-link" href="#year-2022">2022</span>
+                    <span class="base-link hover-link" href="#year-2022">2022</span>                  
                   </button>
                 </div>
             </li>
@@ -69,7 +71,7 @@
       </div>
 
       <div class="year-container year-2025">
-        <h1 class="year-header">2025</h1>
+        <h1 class="header year-header" style="color: #3052A1">2025</h1>
         <div class="year-art-container">
           <div class="year-art year-2025">
             <div class="year-art-grid">
@@ -85,47 +87,173 @@
                 </div>
                 <p>test2</p>
               </div>
-              <img src="./src/images/vertical2.jpg"/>
-              <img src="./src/images/horizontal1.jpg"/>
-              <img src="./src/images/vertical3.jpg"/>
-              <img src="./src/images/horizontal3.jpg"/>
+              <div class="picture-wrapper picture-wrapper--vertical">
+                <div class="picture-border">
+                  <img src="./src/images/vertical2.jpg"/>
+                </div>
+                <p>test3</p>
+              </div>
+              <div class="picture-wrapper picture-wrapper--horizontal">
+                <div class="picture-border">
+                  <img src="./src/images/horizontal1.jpg"/>
+                </div>
+                <p>test4</p>
+              </div>
+              <div class="picture-wrapper picture-wrapper--vertical">
+                <div class="picture-border">
+                  <img src="./src/images/vertical3.jpg"/>
+                </div>
+                <p>test5</p>
+              </div>
+              <div class="picture-wrapper picture-wrapper--horizontal">
+                <div class="picture-border">
+                  <img src="./src/images/horizontal3.jpg"/>
+                </div>
+                <p>test6</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="year-container year-2024">
-        <h1 class="year-header year-2024">2024</h1>
+        <h1 class="header year-header year-2024">2024</h1>
         <div class="year-art-container">
         <div class="year-art year-2024">
-          <img src="./src/images/horizontal3.jpg"/>
-          <img src="./src/images/vertical2.jpg"/>
-          <img src="./src/images/vertical3.jpg"/>
-          <img src="./src/images/horizontal2.jpg"/>
-          <img src="./src/images/horizontal1.jpg"/>
+          <div class="year-art-grid">
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal2.jpg"/>
+              </div>
+              <p>this is the description</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical1.jpg"/>
+              </div>
+              <p>test2</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical2.jpg"/>
+              </div>
+              <p>test3</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal1.jpg"/>
+              </div>
+              <p>test4</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical3.jpg"/>
+              </div>
+              <p>test5</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal3.jpg"/>
+              </div>
+              <p>test6</p>
+            </div>
+          </div>
         </div>
         </div>
       </div>
       <div class="year-container year-2023">
-        <h1 class="year-header year-2023">2023</h1>
+        <h1 class="header year-header year-2023">2023</h1>
         <div class="year-art-container">
         <div class="year-art year-2023">
-          <img src="./src/javascript.svg"/>
+          <div class="year-art-grid">
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal2.jpg"/>
+              </div>
+              <p>this is the description</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical1.jpg"/>
+              </div>
+              <p>test2</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical2.jpg"/>
+              </div>
+              <p>test3</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal1.jpg"/>
+              </div>
+              <p>test4</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical3.jpg"/>
+              </div>
+              <p>test5</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal3.jpg"/>
+              </div>
+              <p>test6</p>
+            </div>
+          </div>
         </div>
         </div>
       </div>
       <div class="year-container year-2022">
-        <h1 class="year-header year-2022">2022</h1>
+        <h1 class="header year-header year-2022">2022</h1>
         <div class="year-art-container">
         <div class="year-art year-2022">
-          <img src="./src/javascript.svg"/>
-          <img src="./src/instagram.svg"/>
+          <div class="year-art-grid">
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal2.jpg"/>
+              </div>
+              <p>this is the description</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical1.jpg"/>
+              </div>
+              <p>test2</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical2.jpg"/>
+              </div>
+              <p>test3</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal1.jpg"/>
+              </div>
+              <p>test4</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--vertical">
+              <div class="picture-border">
+                <img src="./src/images/vertical3.jpg"/>
+              </div>
+              <p>test5</p>
+            </div>
+            <div class="picture-wrapper picture-wrapper--horizontal">
+              <div class="picture-border">
+                <img src="./src/images/horizontal3.jpg"/>
+              </div>
+              <p>test6</p>
+            </div>
+          </div>
         </div>
         </div>
       </div>
     </div>
 
-    <script type="module" src="/src/scroll.js"></script>
-    <script type="module" src="/src/main.js"></script>
+    <!-- <script type="module" src="/src/scroll.js"></script> -->
+    <script type="module" src="/src/main.js" defer></script>
 
   </body>
 </html>

@@ -86,10 +86,38 @@ html, body {
   margin: var(--site-margin-main);
   color: var(--theme-text);
   background-color: var(--theme-background);
+  /* TODO: we need line height here? */
   line-height: var(--text-main-line-height);
   visibility: visible;
   opacity: 1;
 }
+
+/* GENERIC CLASSES */
+.header {
+  margin: 0;
+  font-size: var(--h1-font-size);
+  height: var(--all-headings-line-height);
+  letter-spacing: var(--letter-spacing-header);
+  line-height: 1;
+  z-index: 1;
+}
+
+button {
+  background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.base-link {
+  line-height: 1;
+  margin: 0;
+  border-radius: var(--radius-small);
+  padding: 0 .2em 0 .2em;
+}
+
 
 .preloader-container {
   position: fixed;
@@ -122,15 +150,8 @@ html, body {
   overflow: hidden;
 }
 
-/* TODO: simplify header classes */
 .loading-header {
   position: absolute;
-  margin: 0;
-  font-size: var(--h1-font-size);
-  height: var(--all-headings-line-height);
-  letter-spacing: var(--letter-spacing-header);
-  line-height: 1;
-  z-index: 1;
   background-color: var(--swatch-black);
   color: var(--swatch-white);
 }
@@ -181,8 +202,6 @@ li {
 }
 
 .dropdown-button {
-  border: none;
-  background: none;
   font-size: var(--h5-font-size);
   letter-spacing: var(--letter-spacing-small);
   line-height: 1;
@@ -212,15 +231,6 @@ li {
 }
 
 .link-container {
-  background: none;
-	color: inherit;
-	border: none;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-
   position: absolute;
   overflow: hidden;
   top: 0;
@@ -234,28 +244,20 @@ li {
   top: 0;
   left: 0;
   right: 0;
+  /* TODO: do i need this margin inline and width */
   width: fit-content;
   margin-inline: auto;
   background-color: var(--swatch-gray);
   color: var(--swatch-white);
 
-  line-height: 1;
-  margin: 0;
-  padding: 0;
   height: inherit;
   display: flex;
   align-items: center;
-  border-radius: var(--radius-small);
-  padding: 0 0.2em 0 .2em;
   transform: translateY(125%) rotateX(-28deg) rotateY(-28deg) rotate(10deg);
 }
 
 .main-link {
   background-color: var(--swatch-white);
-  line-height: 1;
-  margin: 0;
-  border-radius: var(--radius-small);
-  padding: 0 .2em 0 .2em;
 }
 
 .instagram {
@@ -263,16 +265,10 @@ li {
 }
 
 .year-header {
-  margin: 0;
   position: sticky;
   top: 64px;
-  font-size: var(--h1-font-size);
-  height: var(--all-headings-line-height);
-  letter-spacing: var(--letter-spacing-header);
-  line-height: 1;
   background-color: var(--swatch-white);
   color: var(--swatch-black);
-  z-index: 1;
 }
 
 .wrapper, .year-container:nth-child(4n+1) {
@@ -315,24 +311,24 @@ li {
   grid-row: span 5;  /* Takes 4 rows (400px) */
 }
 
-.year-art-grid img:nth-child(6n+3) {
-  grid-column: 1 / 3;
-  grid-row: span 5;
+.year-art-grid div:nth-child(6n+3) {
+  grid-column: 2 / 3;
+  grid-row: span 6;
 }
 
-.year-art-grid img:nth-child(6n+4) {
-  grid-column: 1 / 4;
-  grid-row: span 5;
+.year-art-grid div:nth-child(6n+4) {
+  grid-column: 1;
+  grid-row: span 3;
 }
 
-.year-art-grid img:nth-child(6n+5) {
+.year-art-grid div:nth-child(6n+5) {
   grid-column: 2 / 3;
   grid-row: span 4;
 }
 
-.year-art-grid img:nth-child(6n+6) {
-  grid-column: span 2;
-  grid-row: span 2;
+.year-art-grid div:nth-child(6n+6) {
+  grid-column: 1 / 2;
+  grid-row: span 4;
 }
 
 .picture-border {
