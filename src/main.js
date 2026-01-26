@@ -15,12 +15,7 @@ const CONFIG = {
     colors: {
         dark: '#080807',
         light: '#fcfcfc',
-        years: ['#3052A1','#CB1D22','#398E2D','#768CBF']
-        // years: {
-        //     twotwo: '#3052A1',
-        //     twothree: '#CB1D22',
-        //     twofour: '#398E2D',
-        //     twofive: '#768CBF'}
+        years: ['#3052A1','#CB1D22','#398E2D','#768CBF','#768CBF']
     }
 };
 
@@ -42,10 +37,9 @@ linkHide: {
     duration: 0.4
 },
 headerScroll: {
-    backgroundColor: '#080807',
-    color: '#fcfcfc',
-    duration: 0.5,
-    ease: 'power3.out'
+    // color: CONFIG.colors.years[1],
+    // filter: "saturate(0%)",
+    ease: 'linear'
 },
 preloaderEnd: {
     yPercent: -120,
@@ -60,6 +54,7 @@ const DOM = {
     preloader: document.querySelector('.preloader-container'),
     fakeButton: document.querySelector('.fake-button'),
     headers: document.querySelectorAll('.year-header'),
+    artSections: document.querySelectorAll('.year-container'),
     nav: document.querySelector('nav'),
     dropdown: {
       container: document.querySelector('.dropdown'),
@@ -110,10 +105,8 @@ const animateLink = (mainLink, hoverLink, isHovering) => {
 const setupDropdownMenu = () => {
     const { container, button, menu, links } = DOM.dropdown;
     const buttonWidth = button.offsetWidth;
-    console.log("enter?", container)
 
     container.addEventListener('mouseenter', () => {
-        console.log("what?")
         let prevX = buttonWidth;
         Array.from(menu.children).forEach((item) => {
             gsap.to(item, { x: prevX });
@@ -141,17 +134,22 @@ const setupDropdownMenu = () => {
 // ============================================
 
 const initScrollAnimations = () => {
-    DOM.headers.forEach((header) => {
+    let test = DOM.artSections[0].offsetHeight;
+    console.log(test)
+
+    DOM.headers.forEach((header, index) => {
+      let distance = DOM.artSections[index].offsetHeight;
       gsap.to(header, {
         scrollTrigger: {
           trigger: header,
           start: `top ${CONFIG.navHeight}px`,
-          end: `bottom ${CONFIG.navHeight}px`,
+          end: `+=${distance}`,
           toggleActions: "play none reset reset",
           scrub: true,
-          duration: 0.5,
+          duration: 100,
         },
-        ...ANIMATIONS.headerScroll
+        ...ANIMATIONS.headerScroll,
+        color: CONFIG.colors.years[index+1]
       });
     });
   };
@@ -168,6 +166,7 @@ const init = () => {
 
 window.addEventListener('load', () => {
     console.log('Everything loaded!');
+    window.scrollTo(0, 0);
 
     init();
     // Hide preloader after a brief delay

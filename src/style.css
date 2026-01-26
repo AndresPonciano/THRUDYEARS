@@ -268,7 +268,8 @@ li {
   position: sticky;
   top: 59px;
   background-color: var(--swatch-white);
-  color: var(--swatch-black);
+  /* color: var(--swatch-black); */
+  filter: saturate(100%);
 }
 
 .wrapper, .year-container > .year-2025 {
