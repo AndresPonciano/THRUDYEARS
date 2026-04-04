@@ -16,7 +16,8 @@ const CONFIG = {
         dark: '#080807',
         light: '#fcfcfc',
         years: ['#3052A1','#CB1D22','#398E2D','#768CBF','#768CBF']
-    }
+    },
+    prevMouse: {x: 0, y: 0}
 };
 
 const ANIMATIONS = {
@@ -41,6 +42,9 @@ headerScroll: {
     // filter: "saturate(0%)",
     ease: 'linear'
 },
+preloaderLineExpand: {
+    width: "100%"
+},
 preloaderEnd: {
     yPercent: -120,
     ease: 'power2.out',
@@ -52,10 +56,13 @@ preloaderEnd: {
 // ============================================
 const DOM = {
     preloader: document.querySelector('.preloader-container'),
+    preloaderLine: document.querySelector('.preloader-line'),
     fakeButton: document.querySelector('.fake-button'),
     headers: document.querySelectorAll('.year-header'),
     artSections: document.querySelectorAll('.year-container'),
     nav: document.querySelector('nav'),
+    artImages: document.querySelectorAll('.picture-border > img'),
+    artImagesContainers: document.querySelectorAll('.picture-border'),
     dropdown: {
       container: document.querySelector('.dropdown'),
       get button() { return this.container.querySelector('.dropdown-button'); },
@@ -130,6 +137,31 @@ const setupDropdownMenu = () => {
 };
 
 // ============================================
+// ART IMG 
+// ============================================
+const setupFrameParallax = () => {
+    DOM.artImages.forEach((image, index) => {
+        image.addEventListener('mousemove', (event) => {
+            // MIGHT WANNA MAKE VARIALBES HERE BASED OFF IF HORIZONTAL OR VERTICAL IMG
+            console.log(DOM.artImagesContainers[index].style);
+
+            let mouseX = (event.clientX / window.innerWidth) * 5;
+            let mouseY = (event.clientY / window.innerHeight) * 8; 
+            console.log(mouseX, mouseY);
+
+            let changeX = mouseX - CONFIG.prevMouse.x;
+            let changeY = mouseY - CONFIG.prevMouse.y;
+            // image.style.translate = `${changeX}px ${changeY}px`
+
+
+            CONFIG.prevMouse.x = mouseX;
+            CONFIG.prevMouse.y = mouseY;
+        })
+    })
+}
+
+
+// ============================================
 // INITIALIZATION
 // ============================================
 
@@ -161,6 +193,7 @@ const hidePreloader = () => {
 const init = () => {
     initScrollAnimations();
     setupDropdownMenu();
+    setupFrameParallax();
     // other setup functions...
 };
 
@@ -173,7 +206,7 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         hidePreloader();
         document.body.style.overflow = "scroll";
-    }, 2000);
+    }, 3000);
 });
 // ============================================
 // PRELOADER ANIMATIONS
@@ -190,6 +223,8 @@ const setupPreloader= () => {
       .add(() => next_preloader_year(slides), "+=1")
       .add(() => next_preloader_year(slides), "+=1")
     //   .repeat(5)
+
+    gsap.to(DOM.preloaderLine, ANIMATIONS.preloaderLineExpand);
 }
 setupPreloader();
 
