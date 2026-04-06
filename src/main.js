@@ -117,6 +117,11 @@ const setupDropdownMenu = () => {
         const mainLink = link.querySelector('.main-link');
         const hoverLink = link.querySelector('.hover-link');
         
+        link.addEventListener('click', () => {
+            const target = document.querySelector(`.${link.dataset.target}`);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            console.log("test")
+        })
         link.addEventListener('mouseenter', () => animateLink(mainLink, hoverLink, true));
         link.addEventListener('mouseleave', () => animateLink(mainLink, hoverLink, false));
     });
