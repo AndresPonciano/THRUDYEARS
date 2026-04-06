@@ -363,11 +363,11 @@ li {
 }
 
 .picture-wrapper--horizontal:hover img{
-  transform: scale(95%, 92%)
+  /* transform: scale(95%, 92%) */
 }
 
 .picture-wrapper--vertical:hover img{
-  transform: scale(94%, 96%)
+  /* transform: scale(94%, 96%) */
 }
 
 footer {

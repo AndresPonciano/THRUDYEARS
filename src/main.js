@@ -43,7 +43,8 @@ headerScroll: {
     ease: 'linear'
 },
 preloaderLineExpand: {
-    width: "100%"
+    ease: "power1.out",
+    duration: 0.3
 },
 preloaderEnd: {
     yPercent: -120,
@@ -75,25 +76,10 @@ const DOM = {
 // UTILITY FUNCTIONS
 // ============================================
 const next_preloader_year = (slides) => {
-    let slides_length = slides.length;
-
-    rotate(0,slides_length-1,slides);
-    rotate(1,slides_length-1,slides);
+    slides.push(slides.shift());
 
     gsap.set(slides[0], {y: "0%"})
     gsap.set(slides[1], {y: "100%"})
-}
-
-const rotate = (start_index,end_index,slides) => {
-    let i = start_index;
-    while(i < end_index) {
-        let temp = slides[i];
-        slides[i] = slides[end_index];
-        slides[end_index] = temp;
-
-        i += 1;
-        end_index -= 1;
-    }
 }
 // ============================================
 // DROPDOWN MENU
@@ -140,24 +126,45 @@ const setupDropdownMenu = () => {
 // ART IMG 
 // ============================================
 const setupFrameParallax = () => {
-    DOM.artImages.forEach((image, index) => {
-        image.addEventListener('mousemove', (event) => {
-            // MIGHT WANNA MAKE VARIALBES HERE BASED OFF IF HORIZONTAL OR VERTICAL IMG
-            console.log(DOM.artImagesContainers[index].style);
+    const wrappers = document.querySelectorAll('.picture-wrapper');
 
-            let mouseX = (event.clientX / window.innerWidth) * 5;
-            let mouseY = (event.clientY / window.innerHeight) * 8; 
-            console.log(mouseX, mouseY);
+    wrappers.forEach((wrapper) => {
+        const image = wrapper.querySelector('img');
+        const isHorizontal = wrapper.classList.contains('picture-wrapper--horizontal');
+        const scaleX = isHorizontal ? 0.95 : 0.94;
+        const scaleY = isHorizontal ? 0.92 : 0.96;
 
-            let changeX = mouseX - CONFIG.prevMouse.x;
-            let changeY = mouseY - CONFIG.prevMouse.y;
-            // image.style.translate = `${changeX}px ${changeY}px`
+        wrapper.addEventListener('mouseenter', () => {
+            gsap.to(image, { scaleX, scaleY, duration: 0, ease: 'power2.out' });
+        });
 
+        wrapper.addEventListener('mousemove', (event) => {
+            const rect = wrapper.getBoundingClientRect();
 
-            CONFIG.prevMouse.x = mouseX;
-            CONFIG.prevMouse.y = mouseY;
-        })
-    })
+            const normX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            const normY = ((event.clientY - rect.top) / rect.height) * 2 - 1;
+
+            const moveX = -normX * 20;
+            const moveY = -normY * 20;
+
+            gsap.to(image, {
+                x: moveX,
+                y: moveY,
+                duration: 0,
+            });
+        });
+
+        wrapper.addEventListener('mouseleave', () => {
+            gsap.to(image, {
+                x: 0,
+                y: 0,
+                scaleX: 1,
+                scaleY: 1,
+                duration: 0.4,
+                ease: 'power2.out'
+            });
+        });
+    });
 }
 
 
@@ -198,33 +205,57 @@ const init = () => {
 };
 
 window.addEventListener('load', () => {
-    console.log('Everything loaded!');
     window.scrollTo(0, 0);
-
     init();
-    // Hide preloader after a brief delay
-    setTimeout(() => {
-        hidePreloader();
-        document.body.style.overflow = "scroll";
-    }, 3000);
 });
 // ============================================
 // PRELOADER ANIMATIONS
 // ============================================
-const setupPreloader= () => {
+const setupPreloader = () => {
     let tl = gsap.timeline({});
     let slides = gsap.utils.toArray(".loading-header");
-    // DOM.fakeButton.addEventListener("click", () => {
-    //     next_preloader_year(slides)
-    // });
 
     tl.add(() => next_preloader_year(slides), "+=1")
       .add(() => next_preloader_year(slides), "+=1")
       .add(() => next_preloader_year(slides), "+=1")
       .add(() => next_preloader_year(slides), "+=1")
-    //   .repeat(5)
 
-    gsap.to(DOM.preloaderLine, ANIMATIONS.preloaderLineExpand);
+    // Track image load progress
+    const images = Array.from(document.querySelectorAll('.year-art-grid img'));
+    const total = images.length;
+    let loaded = 0;
+    let imagesDone = false;
+
+    const tryHide = () => {
+        if (!imagesDone) return;
+        setTimeout(() => {
+            hidePreloader();
+            document.body.style.overflow = "scroll";
+        }, 2000);
+    };
+
+    const onImageSettle = () => {
+        loaded++;
+        const progress = loaded / total;
+        gsap.to(DOM.preloaderLine, {
+            ...ANIMATIONS.preloaderLineExpand,
+            width: `${progress * 100}%`,
+        });
+
+        if (loaded === total) {
+            imagesDone = true;
+            tryHide();
+        }
+    };
+
+    images.forEach(img => {
+        if (img.complete) {
+            onImageSettle();
+        } else {
+            img.addEventListener('load', onImageSettle);
+            img.addEventListener('error', onImageSettle);
+        }
+    });
 }
 setupPreloader();
 
