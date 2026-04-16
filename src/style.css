@@ -344,6 +344,7 @@ li {
   grid-row: span 4;
 }
 
+/* TODO: do we need to delete these? */
 .picture-border {
   display: flex;
 }

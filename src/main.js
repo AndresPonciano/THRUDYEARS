@@ -3,6 +3,11 @@
 // ============================================
 import gsap from 'gsap';
 import { ScrollTrigger, MotionPathPlugin } from 'gsap/all';
+import { createApp } from 'vue'
+import App from './App.vue'
+import "./style.css"
+
+createApp(App).mount('#app')
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(MotionPathPlugin);
@@ -178,9 +183,6 @@ const setupFrameParallax = () => {
 // ============================================
 
 const initScrollAnimations = () => {
-    let test = DOM.artSections[0].offsetHeight;
-    console.log(test)
-
     DOM.headers.forEach((header, index) => {
       let distance = DOM.artSections[index].offsetHeight;
       gsap.to(header, {
