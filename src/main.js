@@ -133,81 +133,14 @@ const setupDropdownMenu = () => {
 };
 
 // ============================================
-// ART IMG 
-// ============================================
-const setupFrameParallax = () => {
-    const wrappers = document.querySelectorAll('.picture-wrapper');
-
-    wrappers.forEach((wrapper) => {
-        const image = wrapper.querySelector('img');
-        const isHorizontal = wrapper.classList.contains('picture-wrapper--horizontal');
-        const scaleX = isHorizontal ? 0.95 : 0.94;
-        const scaleY = isHorizontal ? 0.92 : 0.96;
-
-        wrapper.addEventListener('mouseenter', () => {
-            gsap.to(image, { scaleX, scaleY, duration: 0, ease: 'power2.out' });
-        });
-
-        wrapper.addEventListener('mousemove', (event) => {
-            const rect = wrapper.getBoundingClientRect();
-
-            const normX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-            const normY = ((event.clientY - rect.top) / rect.height) * 2 - 1;
-
-            const moveX = -normX * 20;
-            const moveY = -normY * 20;
-
-            gsap.to(image, {
-                x: moveX,
-                y: moveY,
-                duration: 0,
-            });
-        });
-
-        wrapper.addEventListener('mouseleave', () => {
-            gsap.to(image, {
-                x: 0,
-                y: 0,
-                scaleX: 1,
-                scaleY: 1,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
-        });
-    });
-}
-
-
-// ============================================
 // INITIALIZATION
 // ============================================
-
-const initScrollAnimations = () => {
-    DOM.headers.forEach((header, index) => {
-      let distance = DOM.artSections[index].offsetHeight;
-      gsap.to(header, {
-        scrollTrigger: {
-          trigger: header,
-          start: `top ${CONFIG.navHeight}px`,
-          end: `+=${distance}`,
-          toggleActions: "play none reset reset",
-          scrub: true,
-          duration: 100,
-        },
-        ...ANIMATIONS.headerScroll,
-        color: CONFIG.colors.years[index+1]
-      });
-    });
-  };
-
 const hidePreloader = () => {
     gsap.to(DOM.preloader, ANIMATIONS.preloaderEnd);
 }
 
 const init = () => {
-    initScrollAnimations();
     setupDropdownMenu();
-    setupFrameParallax();
     // other setup functions...
 };
 
