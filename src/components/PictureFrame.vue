@@ -2,7 +2,7 @@
   <div>
     <div ref="wrapper" :class="['picture-wrapper', `picture-wrapper--${orientation}`]">
         <div class="picture-border">
-        <img :src="imageSrc" />
+        <img :src="props.imageSrc" />
         </div>
     </div>
     <p>{{ title }}</p>
@@ -88,5 +88,12 @@ onUnmounted(() => {
   border: 1px solid var(--swatch-black);
 }
 
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 /* GSAP controls img transforms — no CSS transition needed here */
+
+
 </style>

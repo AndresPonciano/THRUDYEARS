@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/Logo_mockup.svg" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo_center.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,13 +32,24 @@
           <ul>
             <li>
               <div class="logo-container">
-                <img src="/src/Logo_mockup.svg" class="logo" alt="THRUDYEARS logo" />
+                <div class="logo_top" >
+                  <img src="/images/logo_top.svg" alt="THRUDYEARS logo top" />
+                </div>
+                <img src="/images/logo_main.svg" class="logo_main" alt="THRUDYEARS logo main" />
+                <div class="logo_right">
+                  <img src="/images/logo_right.svg" alt="THRUDYEARS logo right" />
+                </div>
               </div>
             </li>
             <li>
               <div class="dropdown">
                 <button class="dropdown-button">THRUDYEARS</button>
                 <div class="dropdown-menu">
+                  <span class="menu-space"></span>
+                  <button class="link-container" data-target="year-2026">
+                    <span class="base-link main-link">2026</span>
+                    <span class="base-link hover-link">2026</span>
+                  </button>
                   <span class="menu-space"></span>
                   <button class="link-container" data-target="year-2025">
                     <span class="base-link main-link">2025</span>
@@ -255,8 +266,10 @@
       </div>
 
       <footer>
-          <div class="spacer"></div>
-          <img id="pfp" src="/src/images/pixil-frame-0.png"/>
+        
+        <canvas id="footer-canvas"></canvas>
+        canvas
+          <!-- <div class="spacer"></div>
           <ul class="footer-year-list">
             <li class="base-link footer-year-list-item">2025</li>
             <li class="base-link footer-year-list-item">2024</li>
@@ -267,16 +280,14 @@
             ANDRES PONCIANO
             <p>coding and drawing</p>
           </span>
-          <!-- <span id="footer-email">E: andres.ponciano123@gmail.com</span> -->
           <ul class="footer-link-list">
             <li>instagram</li>
             <li>github</li>
             <li>linkedin</li>
-          </ul>
+          </ul> -->
       </footer>
     </div>
 
-    <!-- <script type="module" src="/src/scroll.js"></script> -->
     <script type="module" src="/src/main.js" defer></script>
 
   </body>

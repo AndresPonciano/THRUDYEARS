@@ -61,6 +61,7 @@ preloaderEnd: {
 // DOM REFERENCES
 // ============================================
 const DOM = {
+    logo: document.querySelector('.logo-container'),
     preloader: document.querySelector('.preloader-container'),
     preloaderLine: document.querySelector('.preloader-line'),
     fakeButton: document.querySelector('.fake-button'),
@@ -89,7 +90,6 @@ const next_preloader_year = (slides) => {
 // ============================================
 // DROPDOWN MENU
 // ============================================
-
 const animateLink = (mainLink, hoverLink, isHovering) => {
     if (isHovering) {
       gsap.to(hoverLink, ANIMATIONS.linkReset);
@@ -103,6 +103,13 @@ const animateLink = (mainLink, hoverLink, isHovering) => {
 const setupDropdownMenu = () => {
     const { container, button, menu, links } = DOM.dropdown;
     const buttonWidth = button.offsetWidth;
+
+    let containerWidth = container.offsetWidth;
+    Array.from(menu.children).forEach((item) => {
+        containerWidth += item.offsetWidth;
+    });
+    container.style.width = `${containerWidth}px`;
+
 
     container.addEventListener('mouseenter', () => {
         let prevX = buttonWidth;
@@ -123,7 +130,7 @@ const setupDropdownMenu = () => {
         const hoverLink = link.querySelector('.hover-link');
         
         link.addEventListener('click', () => {
-            const target = document.querySelector(`.${link.dataset.target}`);
+            const target = document.getElementById(link.dataset.target);
             if (target) target.scrollIntoView({ behavior: 'smooth' });
             console.log("test")
         })
@@ -131,6 +138,37 @@ const setupDropdownMenu = () => {
         link.addEventListener('mouseleave', () => animateLink(mainLink, hoverLink, false));
     });
 };
+
+// ============================================
+// LOGO HOVER ANIMATION
+// ============================================
+const animateLogo = (isHovering) => {
+    const top = DOM.logo.querySelector('.logo_top');
+    const right = DOM.logo.querySelector('.logo_right');
+
+    let timeline = gsap.timeline({ paused: true, repeat: -1 })
+        .to(top, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' })
+        .to(right, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' }, "<")
+        .to(top, { autoAlpha: 0, duration: 0.3, ease: 'power2.out' }, "+=0.3")
+        .to(right, { autoAlpha: 0, duration: 0.3, ease: 'power2.out' });
+
+    if (isHovering) {
+        gsap.to(top, { autoAlpha: 0, duration: 0.3, ease: 'power2.out' });
+        gsap.to(right, { autoAlpha: 0, duration: 0.3, ease: 'power2.out' });
+
+        timeline.play();
+    } else {
+        timeline.restart();
+
+        gsap.to(top, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' });
+        gsap.to(right, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' });
+    }
+};
+
+const setupLogoHover = () => {
+    // DOM.logo.addEventListener('mouseenter', () => animateLogo(true));
+    // DOM.logo.addEventListener('mouseleave', () => animateLogo(false));
+}
 
 // ============================================
 // INITIALIZATION
@@ -141,6 +179,7 @@ const hidePreloader = () => {
 
 const init = () => {
     setupDropdownMenu();
+    setupLogoHover();
     // other setup functions...
 };
 
@@ -198,16 +237,3 @@ const setupPreloader = () => {
     });
 }
 setupPreloader();
-
-
-// ============================================
-// SCROLL ANIMATIONS
-// ============================================
-
-// ============================================
-// DROPDOWN MENU
-// ============================================
-
-// ============================================
-// INITIALIZATION
-// ============================================
