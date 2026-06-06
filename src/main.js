@@ -61,7 +61,11 @@ preloaderEnd: {
 // DOM REFERENCES
 // ============================================
 const DOM = {
-    logo: document.querySelector('.logo-container'),
+    logo: {
+        container: document.querySelector('.logo-container'),
+        top: document.querySelector('.logo_top'),
+        right: document.querySelector('.logo_right')
+    },
     preloader: document.querySelector('.preloader-container'),
     preloaderLine: document.querySelector('.preloader-line'),
     fakeButton: document.querySelector('.fake-button'),
@@ -142,32 +146,29 @@ const setupDropdownMenu = () => {
 // ============================================
 // LOGO HOVER ANIMATION
 // ============================================
-const animateLogo = (isHovering) => {
-    const top = DOM.logo.querySelector('.logo_top');
-    const right = DOM.logo.querySelector('.logo_right');
+let hoverTimeline = gsap.timeline({ paused: true, repeat: -1 })
+    .to(DOM.logo.top, { autoAlpha: 0 })
+    .to(DOM.logo.right, { autoAlpha: 0 }, "<", "+=0.1")
+    .to(DOM.logo.top, { autoAlpha: 1 }, "+=0.1")
+    .to(DOM.logo.right, { autoAlpha: 1 }, "+=0.1");
 
-    let timeline = gsap.timeline({ paused: true, repeat: -1 })
-        .to(top, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' })
-        .to(right, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' }, "<")
-        .to(top, { autoAlpha: 0, duration: 0.3, ease: 'power2.out' }, "+=0.3")
-        .to(right, { autoAlpha: 0, duration: 0.3, ease: 'power2.out' });
+let hoverExitTimeline = gsap.timeline({ paused: true })
+    .to(DOM.logo.top, { autoAlpha: 1 })
+    .to(DOM.logo.right, { autoAlpha: 1 })
+
+const animateLogo = (isHovering) => {
 
     if (isHovering) {
-        gsap.to(top, { autoAlpha: 0, duration: 0.3, ease: 'power2.out' });
-        gsap.to(right, { autoAlpha: 0, duration: 0.3, ease: 'power2.out' });
-
-        timeline.play();
+        hoverTimeline.play();
     } else {
-        timeline.restart();
-
-        gsap.to(top, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' });
-        gsap.to(right, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' });
+        hoverTimeline.pause(0);
+        hoverExitTimeline.play();
     }
 };
 
 const setupLogoHover = () => {
-    // DOM.logo.addEventListener('mouseenter', () => animateLogo(true));
-    // DOM.logo.addEventListener('mouseleave', () => animateLogo(false));
+    DOM.logo.container.addEventListener('mouseenter', () => animateLogo(true));
+    DOM.logo.container.addEventListener('mouseleave', () => animateLogo(false));
 }
 
 // ============================================

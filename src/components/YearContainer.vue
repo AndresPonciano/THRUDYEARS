@@ -44,7 +44,7 @@ const props = defineProps({
   },
   navHeight: {
     type: Number,
-    default: 59,
+    default: 120.4,
   },
   scrollToColor: {
     type: String,
@@ -56,21 +56,25 @@ const headerRef = ref(null);
 const artRef = ref(null);
 let scrollTriggerInstance = null;
 
-// const initScrollAnimation = () => {
-//   if (!headerRef.value || !artRef.value) return;
-//   const animProps = {
-//     scrollTrigger: {
-//       trigger: headerRef.value,
-//       start: `top ${props.navHeight}px`,
-//       end: `+=${artRef.value.offsetHeight}`,
-//       toggleActions: 'play none reset reset',
-//       scrub: true,
-//       onUpdate: null,
-//     },
-//     ...(props.scrollToColor ? { color: props.scrollToColor } : {}),
-//   };
-//   scrollTriggerInstance = gsap.to(headerRef.value, animProps);
-// };
+const initScrollAnimation = () => {
+  console.log(props);
+  if (!headerRef.value || !artRef.value) return;
+  const animProps = {
+    scrollTrigger: {
+      trigger: headerRef.value,
+      start: `top ${props.navHeight}px`,
+      end: `+=${artRef.value.offsetHeight}`,
+      toggleActions: 'play none reset reset',
+      scrub: true,
+    },
+    ...(props.scrollToColor ? { color: props.scrollToColor } : {}),
+  };
+  scrollTriggerInstance = gsap.to(headerRef.value, animProps);
+};
+
+onMounted(() => {
+  initScrollAnimation();
+});
 
 onUnmounted(() => {
   scrollTriggerInstance?.scrollTrigger?.kill();
@@ -85,14 +89,14 @@ onUnmounted(() => {
 
 .year-header {
   position: sticky;
-  top: 59px;
+  top: 120.4px;
   background-color: var(--swatch-white);
   filter: saturate(100%);
 }
 
 .year-art-container {
   position: relative;
-  margin-top: 59px;
+  margin-top: 120.4px;
 }
 
 .year-art {

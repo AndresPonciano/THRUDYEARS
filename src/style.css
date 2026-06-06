@@ -144,14 +144,14 @@ button {
 
 .fake-nav {
   background-color: var(--swatch-black);
-  height: 59px;
+  height: 120.4px;
 }
 
 .slider {
   position: relative;
   font-size: var(--h1-font-size);
   height: var(--all-headings-line-height);
-  margin-top: 59px;
+  margin-top: 120.4px;
   overflow: hidden;
 }
 
@@ -195,7 +195,6 @@ li {
   /* TODO: do i need these font variables */
   font-size: var(--h6-font-size);
   font-weight: 600;
-  outline: red solid 1px;
 }
 
 .logo-container {
