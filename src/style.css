@@ -192,6 +192,7 @@ ul {
 }
 
 li {
+  /* TODO: do i need these font variables */
   font-size: var(--h6-font-size);
   font-weight: 600;
   outline: red solid 1px;
@@ -309,6 +310,7 @@ li {
 }
 
 .instagram {
+  vertical-align: middle;
   height: 1.5em;
 }
 
